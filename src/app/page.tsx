@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <Container>
       <main>
-        <Categories />
         <ShopCategories />
+        <Categories />
         <FeaturedProducts />
       </main>
     </Container>
