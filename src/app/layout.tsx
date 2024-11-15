@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Freshivores",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
