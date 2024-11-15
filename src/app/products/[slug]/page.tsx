@@ -2,7 +2,7 @@ import Container from "@/components/layout/container";
 import ProductsHeader from "@/components/products/header";
 import CategorySidebar from "@/components/products/CategorySidebar";
 import ProductGrid from "@/components/products/ProductGrid";
-import { ProductResponse } from "@/types/product";
+import { Product, ProductResponse } from "@/types/product";
 
 interface Props {
   params: {
@@ -53,12 +53,12 @@ async function getProducts(slug: string) {
 export default async function ProductsPage({ params }: Props) {
   const productsData: ProductResponse = await getProducts(params.slug);
 
-  const products = productsData.items.map((item) => ({
+  const products = productsData.items.map((item: Product) => ({
     id: item.id.toString(),
     title: item.title,
-    subtitle: item.short_description,
+    subtitle: item.subtitle,
     price: 0,
-    image: item.media.file_path,
+    image: item.image,
   }));
 
   return (
