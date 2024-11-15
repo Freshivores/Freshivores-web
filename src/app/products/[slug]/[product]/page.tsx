@@ -11,7 +11,7 @@ async function getProduct(id: string) {
       {
         headers: {
           accept: "application/json",
-        }
+        },
       }
     );
 
@@ -27,14 +27,14 @@ async function getProduct(id: string) {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
     product: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { product } = params;
+  const { product } = await params;
   const productData: ProductDetails = await getProduct(product);
 
   if (!productData) {

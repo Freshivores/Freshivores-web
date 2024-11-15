@@ -5,9 +5,9 @@ import ProductGrid from "@/components/products/ProductGrid";
 import { ProductResponse } from "@/types/product";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getProducts(slug: string) {
