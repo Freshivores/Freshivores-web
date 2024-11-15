@@ -2,22 +2,48 @@ import Container from "@/components/layout/container";
 import DeliveryFeatures from "@/components/product/DeliveryFeatures";
 import ProductDetail from "@/components/product/ProductDetail";
 import RelatedProducts from "@/components/product/RelatedProducts";
-import { Product } from "@/types/product";
+import { ProductDetails } from "@/types/product";
 
+async function getProduct(id: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
+      {
+        headers: {
+          accept: "application/json",
+        }
+      }
+    );
 
-const dummyProduct: Product = {
-  id: "2",
-  title: "Red Chilli Powder (Mix & Make)",
-  subtitle: "Milled To Order Customizable Powder",
-  price: 900,
-  image: "https://www.freshivores.com/uploads/media/WEB%20PSD%20chilli%201659d721e7be01.webp",
-};
+    if (!res.ok) {
+      throw new Error(`Failed to fetch product: ${res.status}`);
+    }
 
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
 
-export default function ProductPage() {
+interface Props {
+  params: {
+    slug: string;
+    product: string;
+  };
+}
+
+export default async function ProductPage({ params }: Props) {
+  const { product } = params;
+  const productData: ProductDetails = await getProduct(product);
+
+  if (!productData) {
+    return <div>Product not found</div>;
+  }
+
   return (
     <Container>
-      <ProductDetail product={dummyProduct} />
+      <ProductDetail product={productData} />
       <DeliveryFeatures />
       <RelatedProducts />
     </Container>

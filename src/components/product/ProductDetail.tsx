@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/types/product";
+import { ProductDetails } from "@/types/product";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
 
 interface ProductDetailProps {
-  product: Product;
+  product: ProductDetails;
 }
 
 export default function ProductDetail({ product }: ProductDetailProps) {
@@ -27,7 +27,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         {/* Product Image */}
         <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
           <Image
-            src={`${product.image}`}
+            src={`${product?.media?.file_path}`}
             alt={product.title}
             fill
             className="object-contain"
@@ -37,11 +37,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         {/* Product Info */}
         <div>
           <h1 className="text-3xl font-semibold mb-2">{product.title}</h1>
-          <p className="text-gray-600 mb-6">{product.subtitle}</p>
+          <p className="text-gray-600 mb-6">{product?.short_description}</p>
 
           <div className="flex flex-row gap-4 items-center">
             <div className="flex gap-2 mb-8 items-center">
-              <span className="text-2xl font-semibold">₹{product.price}</span>
+              <span className="text-2xl font-semibold">₹{product?.product_variants[0]?.sale_price}</span>
               <span className="text-gray-600">/ KG</span>
             </div>
 
@@ -90,7 +90,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </svg>
               Add to cart
             </button>
-            <button className="px-6 py-2 bg-orange-500 text-white rounded-md flex items-center gap-2 hover:bg-orange-600">
+            <button className="px-6 py-2 bg-orange-400 text-white rounded-md flex items-center gap-2 hover:bg-orange-600">
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -106,9 +106,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </svg>
               Mill as you wish
             </button>
-            <button className="px-6 py-2 bg-green-700 text-white rounded-md hover:bg-green-800">
+            {/* <button className="px-6 py-2 bg-green-700 text-white rounded-md hover:bg-green-800">
               Bulk Order
-            </button>
+            </button> */}
           </div>
 
           {/* Frequently Bought Together */}
