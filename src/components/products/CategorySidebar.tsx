@@ -1,16 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-interface HeaderCategory {
-  title: string;
-  slug: string;
-  priority: number;
-  menu_priority: number;
-  media2: {
-    file_path: string;
-    thumb_file_path: string;
-  };
-}
+import { HeaderCategory } from "@/types/category";
 
 async function getHeaderCategories() {
   try {
@@ -64,7 +54,6 @@ export default async function CategorySidebar() {
       <nav>
         <ul className="space-y-4">
           {categories.map((category) => {
-            console.log(JSON.stringify(category));
             if(!category?.media2?.thumb_file_path) return
             return (
               <li key={category.slug}>

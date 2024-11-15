@@ -3,14 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  price: number;
-  image: string;
-}
+import { Product } from "@/types/product";
 
 interface ProductGridProps {
   products: Product[];

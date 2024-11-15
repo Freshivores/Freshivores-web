@@ -56,7 +56,7 @@ export default async function ShopCategories() {
                   <h3 className="text-base md:text-2xl font-semibold text-gray-800 md:mb-1 capitalize text-center md:text-left line-clamp-1">
                     {category.title}
                   </h3>
-                  <p className="text-gray-600 text-sm line-clamp-1 w-5/6">
+                  <p className="text-gray-600 text-sm line-clamp-1 w-5/6 capitalize">
                     {category.short_description}
                   </p>
                 </div>
