@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import withPlaiceholder from "@plaiceholder/next";
 
 const nextConfig: NextConfig = {
   images: {
@@ -22,4 +23,5 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default withPlaiceholder(nextConfig);
+  
