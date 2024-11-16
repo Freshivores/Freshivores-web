@@ -4,13 +4,13 @@ import ProductImage from "./ProductImage";
 
 interface ProductCardProps {
   product: Product;
-//   href: string;
+  href: string;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, href }: ProductCardProps) {
   return (
     <Link
-      href={`/product/${product.id}`}
+      href={href}
       className="bg-white cursor-pointer group"
     >
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
