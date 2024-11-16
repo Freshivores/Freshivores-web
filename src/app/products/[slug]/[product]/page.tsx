@@ -28,7 +28,6 @@ async function getProduct(id: string) {
 
 interface Props {
   params: Promise<{
-    slug: string;
     product: string;
   }>;
 }
@@ -42,10 +41,12 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <Container>
-      <ProductDetail product={productData} />
-      <DeliveryFeatures />
-      <RelatedProducts />
-    </Container>
+    <main className="py-4">
+      <Container>
+        <ProductDetail product={productData} />
+        <DeliveryFeatures />
+        <RelatedProducts />
+      </Container>
+    </main>
   );
 }

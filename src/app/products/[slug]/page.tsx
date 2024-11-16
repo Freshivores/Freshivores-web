@@ -1,6 +1,3 @@
-import Container from "@/components/layout/container";
-import ProductsHeader from "@/components/products/header";
-import CategorySidebar from "@/components/products/CategorySidebar";
 import ProductGrid from "@/components/products/ProductGrid";
 import { ProductResponse } from "@/types/product";
 
@@ -40,18 +37,8 @@ export default async function ProductsPage({ params }: Props) {
   }));
 
   return (
-    <Container>
-      <main className="py-4">
-        <ProductsHeader title="Products" />
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-4">
-          <aside className="lg:col-span-1">
-            <CategorySidebar />
-          </aside>
-          <div className="lg:col-span-3">
-            <ProductGrid products={products} />
-          </div>
-        </div>
-      </main>
-    </Container>
+    <div className="lg:col-span-3">
+      <ProductGrid products={products} />
+    </div>
   );
 }
